@@ -309,6 +309,8 @@ module OAuth
       end
 
       http_object.use_ssl = (our_uri.scheme == 'https')
+      
+      http_object.ca_path = ENV['SSL_CERT_DIR'] if ENV['SSL_CERT_DIR']
 
       if @options[:ca_file] || CA_FILE
         http_object.ca_file = @options[:ca_file] || CA_FILE
